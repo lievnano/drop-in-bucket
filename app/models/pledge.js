@@ -13,7 +13,7 @@ var Pledge = db.Model.extend({
 
   user: function(){
     return this.belongsTo(User);
-  }
+  },
 
   drops: function(){
     return this.hasMany(Drop);

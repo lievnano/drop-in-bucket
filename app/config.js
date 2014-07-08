@@ -18,8 +18,10 @@ db.knex.schema.hasTable('users').then(function(exists){
       user.string('username', 30).notNullable().unique();
       user.string('password', 255).notNullable();
       user.string('email', 255).notNullable().unique();
-      user.string('clearance', 40).notNullable();
+      user.string('clearance', 40);
       user.timestamps();
+    }).then(function (table) {
+      console.log('Created Table', table);
     });
   }
 });
@@ -32,6 +34,8 @@ db.knex.schema.hasTable('buckets').then(function(exists){
       bucket.integer('user_id').index().references('users.id');
       bucket.string('route', 40).unique().index();
       bucket.timestamps();
+    }).then(function (table) {
+      console.log('Created Table', table);
     });
   }
 });
@@ -45,6 +49,8 @@ db.knex.schema.hasTable('pledges').then(function(exists){
       pledge.integer('user_id').index().references('users.id');
       pledge.integer('value');
       pledge.timestamps();
+    }).then(function (table) {
+      console.log('Created Table', table);
     });
   }
 });
@@ -58,9 +64,14 @@ db.knex.schema.hasTable('drops').then(function(exists){
       drop.integer('pledge_id').index().references('pledges.id');
       drop.integer('user_id').index().references('users.id');
       drop.timestamps();
+    }).then(function (table) {
+      console.log('Created Table', table);
     });
   }
 });
+
+module.exports = db;
+
 
 // db.knex.schema.hasTable('quizzes').then(function(exists){
 //   if(!exists){

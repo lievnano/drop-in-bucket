@@ -8,7 +8,7 @@ var Drop = db.Model.extend({
 
   pledge: function(){
     return this.belongsTo(Pledge);
-  }
+  },
 });
 
 module.exports = Drop;

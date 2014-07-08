@@ -14,14 +14,12 @@ var User = db.Model.extend({
 
   pledges: function(){
     return this.hasMany(Pledge);
-  }
+  },
 
   saveToDB: function(pswd, callback){
+    console.log('here');
     var context = this;
-    bcrypt.genSalt(12, function(err, salt){
-      if (err) throw err;
-
-      bcrypt.genSalt(12, function(err, salt){
+    bcrypt.genSalt(12, function(err, salt) {
       if (err) throw err;
 
       bcrypt.hash(pswd, salt, null, function(err, hash) {
