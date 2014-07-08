@@ -1,0 +1,14 @@
+<html>
+<head>
+<title>Bucket {{title}}</title>
+</head>
+
+<body>
+
+{{#if User.IsActive}}
+  <!-- nav bar for current user -->
+{{else}}
+  <!-- nav bar for not logged in -->
+{{/if}}
+
+{{{body}}}
